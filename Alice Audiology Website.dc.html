@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #FBF7F3; -webkit-font-smoothing: antialiased; }
+  a { color: #632718; text-decoration: none; }
+  a:hover { color: #A8461D; }
+  * { scroll-behavior: smooth; }
+</style>
+</helmet>
+
+<div style="font-family: 'Source Sans 3', system-ui, sans-serif; color: #332B27; font-size: 18px; line-height: 1.7; background: #FBF7F3;">
+
+  <!-- ================= HEADER ================= -->
+  <div style="position: sticky; top: 0; z-index: 50; background: #FBF7F3; border-bottom: 1px solid #E6D9CC; box-shadow: 0 2px 14px rgba(47,19,22,0.06);">
+    <div style="display: {{ deskNav }}; background: #2F1316;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 7px 28px; display: flex; align-items: center; justify-content: flex-end; gap: 26px; font-size: 15px; color: #E3C6AE;">
+        <span>Level 1, 8 Gregory Terrace, Alice Springs NT 0870</span>
+        <a href="tel:0889523110" style="color: #F0E3D8; font-weight: 600;">(08) 8952 3110</a>
+        <a href="mailto:reception@aliceaudiology.com.au" style="color: #F0E3D8;">reception@aliceaudiology.com.au</a>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px;">
+      <img src="uploads/Alice Audiology Logo.jpg" alt="Alice Audiology — ear and hearing clinic, Alice Springs" onClick="{{ goHome }}" style="width: {{ logoW }}; max-width: 100%; height: auto; min-width: 0; flex: 0 1 auto; display: block; cursor: pointer;">
+
+      <div style="display: {{ deskNav }}; align-items: center; gap: 2px; justify-content: center; flex-wrap: nowrap; flex: 1 1 auto; min-width: 0;">
+        <span onClick="{{ goHome }}" style="cursor: pointer; padding: 10px 11px; border-radius: 4px; font-size: 15px; font-weight: 600; color: {{ navHome }}; white-space: nowrap;" style-hover="background: #F2E8DE;">Home</span>
+        <span onClick="{{ goAbout }}" style="cursor: pointer; padding: 10px 11px; border-radius: 4px; font-size: 15px; font-weight: 600; color: {{ navAbout }}; white-space: nowrap;" style-hover="background: #F2E8DE;">About</span>
+
+        <div style="position: relative;">
+          <span onClick="{{ toggleMenu }}" style="cursor: pointer; padding: 10px 11px; border-radius: 4px; font-size: 15px; font-weight: 600; color: {{ navServices }}; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;" style-hover="background: #F2E8DE;">Services <span style="font-size: 11px; opacity: 0.7;">▾</span></span>
+          <div style="position: absolute; top: 100%; left: 0; margin-top: 8px; display: {{ menuDisplay }}; flex-direction: column; min-width: 292px; background: #FFFFFF; border: 1px solid #E6D9CC; border-top: 3px solid #A8461D; border-radius: 4px; box-shadow: 0 18px 46px rgba(47,19,22,0.16); padding: 10px 0;">
+            <span onClick="{{ goServices }}" style="cursor: pointer; padding: 13px 22px; font-size: 16px; font-weight: 600; color: #2F1316;" style-hover="background: #F7EFE7; color: #A8461D;">All Services</span>
+            <span style="height: 1px; background: #EFE3D8; margin: 6px 22px;"></span>
+            <span onClick="{{ goAssess }}" style="cursor: pointer; padding: 13px 22px; font-size: 16px; color: #4A403C;" style-hover="background: #F7EFE7; color: #A8461D;">Hearing Assessments</span>
+            <span onClick="{{ goSpecialist }}" style="cursor: pointer; padding: 13px 22px; font-size: 16px; color: #4A403C;" style-hover="background: #F7EFE7; color: #A8461D;">Specialist Services</span>
+            <span onClick="{{ goAids }}" style="cursor: pointer; padding: 13px 22px; font-size: 16px; color: #4A403C;" style-hover="background: #F7EFE7; color: #A8461D;">Hearing Aids</span>
+            <span onClick="{{ goAids }}" style="cursor: pointer; padding: 13px 22px; font-size: 16px; color: #4A403C;" style-hover="background: #F7EFE7; color: #A8461D;">Assistive Listening Devices</span>
+            <span onClick="{{ goAssess }}" style="cursor: pointer; padding: 13px 22px; font-size: 16px; color: #4A403C;" style-hover="background: #F7EFE7; color: #A8461D;">Hearing Services Program</span>
+            <span onClick="{{ goSpecialist }}" style="cursor: pointer; padding: 13px 22px; font-size: 16px; color: #4A403C;" style-hover="background: #F7EFE7; color: #A8461D;">Wax Management</span>
+          </div>
+        </div>
+
+        <span onClick="{{ goAids }}" style="cursor: pointer; padding: 10px 11px; border-radius: 4px; font-size: 15px; font-weight: 600; color: {{ navAids }}; white-space: nowrap;" style-hover="background: #F2E8DE;">Hearing Aids</span>
+        <span onClick="{{ goLyric }}" style="cursor: pointer; padding: 10px 11px; border-radius: 4px; font-size: 15px; font-weight: 600; color: {{ navLyric }}; white-space: nowrap;" style-hover="background: #F2E8DE;">Lyric</span>
+        <span onClick="{{ goTeam }}" style="cursor: pointer; padding: 10px 11px; border-radius: 4px; font-size: 15px; font-weight: 600; color: {{ navTeam }}; white-space: nowrap;" style-hover="background: #F2E8DE;">Team</span>
+        <span onClick="{{ goBlog }}" style="cursor: pointer; padding: 10px 11px; border-radius: 4px; font-size: 15px; font-weight: 600; color: {{ navBlog }}; white-space: nowrap;" style-hover="background: #F2E8DE;">Resources</span>
+        <span onClick="{{ goContact }}" style="cursor: pointer; padding: 10px 11px; border-radius: 4px; font-size: 15px; font-weight: 600; color: {{ navContact }}; white-space: nowrap;" style-hover="background: #F2E8DE;">Contact</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 14px; flex: none;">
+        <a href="tel:0889523110" style="display: {{ headerPhone }}; font-size: 17px; font-weight: 600; color: #632718; white-space: nowrap;">Call us</a>
+        <span onClick="{{ goBook }}" style="cursor: pointer; font-size: 16px; font-weight: 600; color: #FFFFFF; background: #A8461D; padding: 15px 24px; border-radius: 4px; white-space: nowrap;" style-hover="background: #632718;">{{ ctaLabel }}</span>
+        <span onClick="{{ toggleDrawer }}" aria-label="Menu" style="display: {{ burger }}; cursor: pointer; align-items: center; justify-content: center; width: 52px; height: 52px; border: 1px solid #D9C8B8; border-radius: 4px; font-size: 22px; color: #632718; background: #FBF7F3;" style-hover="background: #F2E8DE;">{{ burgerIcon }}</span>
+      </div>
+    </div>
+
+
+    <!-- compact / mobile drawer -->
+    <div style="display: {{ drawerDisplay }}; flex-direction: column; border-top: 1px solid #E6D9CC; background: #FBF7F3; max-height: 74vh; overflow-y: auto;">
+      <span onClick="{{ goHome }}" style="cursor: pointer; padding: 19px 28px; font-size: 19px; font-weight: 600; color: #2F1316; border-bottom: 1px solid #EFE3D8;">Home</span>
+      <span onClick="{{ goAbout }}" style="cursor: pointer; padding: 19px 28px; font-size: 19px; font-weight: 600; color: #2F1316; border-bottom: 1px solid #EFE3D8;">About</span>
+      <span onClick="{{ goServices }}" style="cursor: pointer; padding: 19px 28px; font-size: 19px; font-weight: 600; color: #2F1316; border-bottom: 1px solid #EFE3D8;">Services</span>
+      <span onClick="{{ goAssess }}" style="cursor: pointer; padding: 16px 28px 16px 44px; font-size: 17px; color: #4A403C; border-bottom: 1px solid #EFE3D8;">Hearing Assessments</span>
+      <span onClick="{{ goSpecialist }}" style="cursor: pointer; padding: 16px 28px 16px 44px; font-size: 17px; color: #4A403C; border-bottom: 1px solid #EFE3D8;">Specialist Services</span>
+      <span onClick="{{ goAids }}" style="cursor: pointer; padding: 16px 28px 16px 44px; font-size: 17px; color: #4A403C; border-bottom: 1px solid #EFE3D8;">Hearing Aids &amp; ALDs</span>
+      <span onClick="{{ goSpecialist }}" style="cursor: pointer; padding: 16px 28px 16px 44px; font-size: 17px; color: #4A403C; border-bottom: 1px solid #EFE3D8;">Wax Management</span>
+      <span onClick="{{ goLyric }}" style="cursor: pointer; padding: 19px 28px; font-size: 19px; font-weight: 600; color: #2F1316; border-bottom: 1px solid #EFE3D8;">Lyric</span>
+      <span onClick="{{ goTeam }}" style="cursor: pointer; padding: 19px 28px; font-size: 19px; font-weight: 600; color: #2F1316; border-bottom: 1px solid #EFE3D8;">Meet the Team</span>
+      <span onClick="{{ goBlog }}" style="cursor: pointer; padding: 19px 28px; font-size: 19px; font-weight: 600; color: #2F1316; border-bottom: 1px solid #EFE3D8;">Resources</span>
+      <span onClick="{{ goTestimonials }}" style="cursor: pointer; padding: 19px 28px; font-size: 19px; font-weight: 600; color: #2F1316; border-bottom: 1px solid #EFE3D8;">Testimonials</span>
+      <span onClick="{{ goContact }}" style="cursor: pointer; padding: 19px 28px; font-size: 19px; font-weight: 600; color: #2F1316; border-bottom: 1px solid #EFE3D8;">Contact</span>
+      <div style="display: flex; flex-direction: column; gap: 12px; padding: 24px 28px 30px;">
+        <span onClick="{{ goBook }}" style="cursor: pointer; font-size: 18px; font-weight: 600; color: #FFFFFF; background: #A8461D; padding: 18px 24px; border-radius: 4px; text-align: center;">Book an Appointment</span>
+        <a href="tel:0889523110" style="font-size: 18px; font-weight: 600; color: #632718; border: 1.5px solid #D9C8B8; padding: 18px 24px; border-radius: 4px; text-align: center;">Call (08) 8952 3110</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 1. HOME ================= -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <div style="position: relative; min-height: 640px; display: flex; align-items: center; overflow: hidden;">
+      <img src="uploads/Custom%20Device%20Fit%20Actionshot.jpg" alt="An audiologist fitting a discreet custom hearing aid for a client" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 22%;">
+      <div style="position: absolute; inset: 0; background: linear-gradient(96deg, rgba(47,19,22,0.92) 0%, rgba(47,19,22,0.78) 46%, rgba(47,19,22,0.28) 100%); pointer-events: none;"></div>
+      <div style="position: relative; max-width: 1320px; width: 100%; margin: 0 auto; padding: 96px 28px; box-sizing: border-box; pointer-events: none;">
+        <div style="max-width: 720px; display: flex; flex-direction: column; gap: 26px; pointer-events: auto;">
+          <span style="font-size: 15px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #E9C7A8;">Independent hearing care · Alice Springs</span>
+          <h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: {{ heroSize }}; line-height: 1.06; color: #FFFFFF; text-wrap: balance;">{{ tagline }}</h1>
+          <div style="display: flex; flex-wrap: wrap; gap: 16px; padding-top: 10px;">
+            <span onClick="{{ goBook }}" style="cursor: pointer; font-size: 17px; font-weight: 600; color: #2F1316; background: #E78F4F; padding: 19px 34px; border-radius: 4px;" style-hover="background: #FFFFFF;">Book an Appointment</span>
+            <span onClick="{{ goServices }}" style="cursor: pointer; font-size: 17px; font-weight: 600; color: #FFFFFF; border: 1.5px solid rgba(255,255,255,0.65); padding: 19px 34px; border-radius: 4px;" style-hover="background: rgba(255,255,255,0.12);">Explore Our Services</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- intro -->
+    <div style="max-width: 1320px; margin: 0 auto; padding: 104px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 72px; align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 22px;">
+        <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">Welcome</span>
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: {{ secSize }}; line-height: 1.14; color: #2F1316;">Where Better Hearing Begins</h2>
+        <p style="margin: 0; font-size: 19px; line-height: 1.8; color: #4A403C;">At Alice Audiology, we combine professional expertise with compassionate care to deliver personalised hearing solutions that help you rediscover the sounds of everyday life.</p>
+        <p style="margin: 0; font-size: 19px; line-height: 1.8; color: #4A403C;">Professional hearing care with a personal touch — helping you hear clearly, communicate confidently, and enjoy life without missing a moment.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; padding-top: 8px;">
+          <span style="font-size: 17px; font-weight: 600; color: #2F1316; background: #FFFFFF; border: 1px solid #E6D9CC; border-left: 3px solid #E78F4F; border-radius: 4px; padding: 14px 16px;">Independent advice</span>
+          <span style="font-size: 17px; font-weight: 600; color: #2F1316; background: #FFFFFF; border: 1px solid #E6D9CC; border-left: 3px solid #E78F4F; border-radius: 4px; padding: 14px 16px;">Experienced clinicians</span>
+          <span style="font-size: 17px; font-weight: 600; color: #2F1316; background: #FFFFFF; border: 1px solid #E6D9CC; border-left: 3px solid #E78F4F; border-radius: 4px; padding: 14px 16px;">Personalised solutions</span>
+          <span style="font-size: 17px; font-weight: 600; color: #2F1316; background: #FFFFFF; border: 1px solid #E6D9CC; border-left: 3px solid #E78F4F; border-radius: 4px; padding: 14px 16px;">Ongoing support</span>
+        </div>
+        <span onClick="{{ goAbout }}" style="cursor: pointer; align-self: flex-start; font-size: 17px; font-weight: 600; color: #632718; border-bottom: 2px solid #E0B98F; padding-bottom: 5px; margin-top: 8px;">Read our story →</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="position: relative; min-height: 440px; border: 1px solid #E6D9CC; border-radius: 6px; overflow: hidden; background: #F3EAE1;"><img src="uploads/266.jpg" alt="A clinician gently examining a smiling client’s ear" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%;"></div>
+      </div>
+    </div>
+
+    <!-- services grid -->
+    <div style="background: #F3EAE1; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 96px 28px;">
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 28px; padding-bottom: 44px;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">What we do</span>
+            <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: {{ secSize }}; line-height: 1.12; color: #2F1316;">Complete hearing care, close to home</h2>
+          </div>
+          <span onClick="{{ goServices }}" style="cursor: pointer; font-size: 17px; font-weight: 600; color: #632718; border-bottom: 2px solid #E0B98F; padding-bottom: 5px;">All services →</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px;">
+          <div onClick="{{ goAssess }}" style="cursor: pointer; background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 34px 30px 30px; display: flex; flex-direction: column; gap: 14px;" style-hover="border-color: #A8461D; box-shadow: 0 14px 34px rgba(47,19,22,0.1);">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#A8461D" stroke-width="1.6" stroke-linecap="round"><circle cx="20" cy="20" r="3.4"></circle><path d="M20 8.5a11.5 11.5 0 0 1 11.5 11.5A11.5 11.5 0 0 1 20 31.5"></path><path d="M20 14.6a5.4 5.4 0 0 1 5.4 5.4 5.4 5.4 0 0 1-5.4 5.4"></path><path d="M12.6 12.6 8.4 8.4M12.6 27.4 8.4 31.6"></path></svg>
+            <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 30px; color: #2F1316;">Hearing Assessments</h3>
+            <p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Comprehensive hearing assessments for children and adults, providing expert evaluation, personalised management and ongoing aftercare.</p>
+            <span style="margin-top: auto; padding-top: 18px; font-size: 16px; font-weight: 600; color: #A8461D;">Find Out More →</span>
+          </div>
+          <div onClick="{{ goSpecialist }}" style="cursor: pointer; background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 34px 30px 30px; display: flex; flex-direction: column; gap: 14px;" style-hover="border-color: #A8461D; box-shadow: 0 14px 34px rgba(47,19,22,0.1);">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#A8461D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h6l3.5-9 5 18 4.5-13 3 6h9"></path></svg>
+            <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 30px; color: #2F1316;">Specialist Services</h3>
+            <p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Tinnitus management, balance disorder assessments, auditory processing evaluations, industrial noise management, hearing monitoring and custom hearing protection solutions.</p>
+            <span style="margin-top: auto; padding-top: 18px; font-size: 16px; font-weight: 600; color: #A8461D;">Find Out More →</span>
+          </div>
+          <div onClick="{{ goAids }}" style="cursor: pointer; background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 34px 30px 30px; display: flex; flex-direction: column; gap: 14px;" style-hover="border-color: #A8461D; box-shadow: 0 14px 34px rgba(47,19,22,0.1);">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#A8461D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 30c-3 0-5-2.2-5-5.4 0-5.6 2.4-6.6 2.4-11.4A7.6 7.6 0 0 1 19 5.6c4.2 0 7.6 3.4 7.6 7.6 0 3.6-2.2 5.2-2.2 8"></path><path d="M24.4 21.2c2.6 1.4 4 3.6 4 6.4 0 3.4-2.4 6-5.6 6"></path><circle cx="18.6" cy="13.4" r="2.6"></circle></svg>
+            <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 30px; color: #2F1316;">Hearing Aids</h3>
+            <p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Unbiased advice and access to a wide range of hearing aids from leading manufacturers, with expert fittings, ongoing support and personalised aftercare.</p>
+            <span style="margin-top: auto; padding-top: 18px; font-size: 16px; font-weight: 600; color: #A8461D;">Find Out More →</span>
+          </div>
+          <div onClick="{{ goSpecialist }}" style="cursor: pointer; background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 34px 30px 30px; display: flex; flex-direction: column; gap: 14px;" style-hover="border-color: #A8461D; box-shadow: 0 14px 34px rgba(47,19,22,0.1);">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#A8461D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="9"></circle><path d="M22.6 22.6 33 33"></path><path d="M12 16h8M16 12v8"></path></svg>
+            <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 30px; color: #2F1316;">Wax Management</h3>
+            <p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Professional ear wax removal using advanced microscope-guided microsuction — gentle, precise and highly effective.</p>
+            <span style="margin-top: auto; padding-top: 18px; font-size: 16px; font-weight: 600; color: #A8461D;">Find Out More →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- why -->
+    <div style="max-width: 1320px; margin: 0 auto; padding: 96px 28px;">
+      <h2 style="margin: 0 0 46px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: {{ secSize }}; line-height: 1.12; color: #2F1316; max-width: 620px;">Why Alice Audiology?</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px;">
+        <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 30px 28px; display: flex; flex-direction: column; gap: 14px;" style-hover="box-shadow: 0 14px 34px rgba(47,19,22,0.1); border-color: #A8461D;">
+          <span style="width: 54px; height: 54px; border-radius: 50%; background: #A8461D14; display: flex; align-items: center; justify-content: center;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#A8461D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5 5 9v6c0 6 4 9.6 9 11 5-1.4 9-5 9-11V9l-9-4Z"></path><path d="M10 14.4l2.6 2.6L18.6 11"></path></svg>
+          </span>
+          <h3 style="margin: 0; font-size: 22px; font-weight: 600; color: #2F1316;">Independent Advice</h3>
+          <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Access hearing solutions from major manufacturers without being tied to a single brand.</p>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 30px 28px; display: flex; flex-direction: column; gap: 14px;" style-hover="box-shadow: 0 14px 34px rgba(47,19,22,0.1); border-color: #B07D2A;">
+          <span style="width: 54px; height: 54px; border-radius: 50%; background: #B07D2A14; display: flex; align-items: center; justify-content: center;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#B07D2A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 15.5a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"></path><path d="M4.5 25c1.6-4.4 5.2-6.6 9.5-6.6s7.9 2.2 9.5 6.6"></path></svg>
+          </span>
+          <h3 style="margin: 0; font-size: 22px; font-weight: 600; color: #2F1316;">Personalised Care</h3>
+          <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Hearing solutions tailored to your hearing needs, your lifestyle and your preferences.</p>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 30px 28px; display: flex; flex-direction: column; gap: 14px;" style-hover="box-shadow: 0 14px 34px rgba(47,19,22,0.1); border-color: #632718;">
+          <span style="width: 54px; height: 54px; border-radius: 50%; background: #63271814; display: flex; align-items: center; justify-content: center;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#632718" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4l3.1 6.3 7 1-5 4.9 1.2 6.9L14 19.8 7.7 23.1l1.2-6.9-5-4.9 7-1L14 4Z"></path></svg>
+          </span>
+          <h3 style="margin: 0; font-size: 22px; font-weight: 600; color: #2F1316;">Experienced Professionals</h3>
+          <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Qualified hearing care professionals supported by caring client service staff.</p>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 30px 28px; display: flex; flex-direction: column; gap: 14px;" style-hover="box-shadow: 0 14px 34px rgba(47,19,22,0.1); border-color: #E78F4F;">
+          <span style="width: 54px; height: 54px; border-radius: 50%; background: #E78F4F14; display: flex; align-items: center; justify-content: center;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#E78F4F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 25s8-7.1 8-13a8 8 0 1 0-16 0c0 5.9 8 13 8 13Z"></path><circle cx="14" cy="12" r="3"></circle></svg>
+          </span>
+          <h3 style="margin: 0; font-size: 22px; font-weight: 600; color: #2F1316;">Local Care</h3>
+          <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Professional hearing care delivered locally in Alice Springs, by people who live here too.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- hearing aids band -->
+    <div style="background: #F3EAE1; border-top: 1px solid #E6D9CC; border-bottom: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 96px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 68px; align-items: center;">
+        <div style="position: relative; min-height: 420px; border: 1px solid #E6D9CC; border-radius: 6px; overflow: hidden; background: #FFFFFF;"><img src="uploads/Action%20Shot%20Phonak.jpg" alt="An audiologist fitting a discreet modern hearing aid while her client laughs" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%;"></div>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">Hearing aids</span>
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 50px; line-height: 1.14; color: #2F1316;">Hearing solutions designed around you</h2>
+          <p style="margin: 0; font-size: 19px; line-height: 1.8; color: #4A403C;">We provide independent guidance and access to hearing aids from all leading manufacturers — then we stay with you through every adjustment.</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; padding-top: 4px;">
+            <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 4px; padding: 16px 16px 14px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1; color: #A8461D;">01</span><span style="font-size: 16px; font-weight: 600; color: #2F1316;">Selection</span></div>
+            <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 4px; padding: 16px 16px 14px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1; color: #A8461D;">02</span><span style="font-size: 16px; font-weight: 600; color: #2F1316;">Fitting</span></div>
+            <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 4px; padding: 16px 16px 14px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1; color: #A8461D;">03</span><span style="font-size: 16px; font-weight: 600; color: #2F1316;">Fine-tuning</span></div>
+            <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 4px; padding: 16px 16px 14px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1; color: #A8461D;">04</span><span style="font-size: 16px; font-weight: 600; color: #2F1316;">Reviews</span></div>
+            <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 4px; padding: 16px 16px 14px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1; color: #A8461D;">05</span><span style="font-size: 16px; font-weight: 600; color: #2F1316;">Support</span></div>
+            <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 4px; padding: 16px 16px 14px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1; color: #A8461D;">06</span><span style="font-size: 16px; font-weight: 600; color: #2F1316;">Aftercare</span></div>
+          </div>
+          <span onClick="{{ goAids }}" style="cursor: pointer; align-self: flex-start; font-size: 17px; font-weight: 600; color: #FFFFFF; background: #632718; padding: 17px 30px; border-radius: 4px; margin-top: 10px;" style-hover="background: #A8461D;">Explore Hearing Aids</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- lyric band -->
+    <div style="background: #2F1316; color: #F6E7DA;">
+      <div style="max-width: 1100px; margin: 0 auto; padding: 108px 28px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px;">
+        <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: #E78F4F;">Lyric</span>
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 62px; line-height: 1.1; color: #FFFFFF;">Hear naturally. Live freely.</h2>
+        <p style="margin: 0; font-size: 20px; line-height: 1.8; color: #EBD8C8; max-width: 700px;">Lyric is a completely invisible hearing device, designed to be worn continuously for months at a time — with no daily handling and no battery changes. As a Lyric Premier Certified Clinic, we fit and replace it here in Alice Springs.</p>
+        <div style="width: 100%; max-width: 360px; height: 240px; border-radius: 6px; overflow: hidden; background: #FFFFFF; position: relative; margin-top: 14px;"><img src="uploads/Pic_Lyric3_Finger.jpg.jpeg" alt="The yellow Lyric device balanced on a fingertip, showing how small it is" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%;"></div>
+        <span onClick="{{ goLyric }}" style="cursor: pointer; font-size: 17px; font-weight: 600; color: #2F1316; background: #E78F4F; padding: 18px 34px; border-radius: 4px; margin-top: 12px;" style-hover="background: #FFFFFF;">Discover Lyric</span>
+      </div>
+    </div>
+
+    <!-- local band -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); min-height: 560px;">
+      <div style="position: relative; min-height: 380px; overflow: hidden;">
+        <img src="uploads/676.jpg" alt="A man cupping his ear, wearing a slim open-fit hearing aid" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%;">
+      </div>
+      <div style="background: #FBF7F3; padding: 92px 60px; display: flex; flex-direction: column; justify-content: center; gap: 20px;">
+        <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">Central Australia</span>
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 50px; line-height: 1.14; color: #2F1316;">Local hearing care. Personal connection.</h2>
+        <p style="margin: 0; font-size: 19px; line-height: 1.8; color: #4A403C; max-width: 520px;">We live and work in Alice Springs. We understand the distances people travel to see us, and how much it matters to hear family clearly on the phone from town camps and remote communities.</p>
+        <p style="margin: 0; font-size: 19px; line-height: 1.8; color: #4A403C; max-width: 520px;">Caring for the hearing of Central Australia since 2011.</p>
+        <span onClick="{{ goAbout }}" style="cursor: pointer; align-self: flex-start; font-size: 17px; font-weight: 600; color: #632718; border-bottom: 2px solid #E0B98F; padding-bottom: 5px; margin-top: 8px;">About our clinic →</span>
+      </div>
+    </div>
+
+    <!-- testimonials -->
+    <div style="background: #F3EAE1; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 96px 28px;">
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; padding-bottom: 40px;">
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: {{ secSize }}; color: #2F1316;">What our clients say</h2>
+          <span onClick="{{ goTestimonials }}" style="cursor: pointer; font-size: 17px; font-weight: 600; color: #632718; border-bottom: 2px solid #E0B98F; padding-bottom: 5px;">All testimonials →</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px;">
+          <div style="background: #FFFFFF; border: 1px dashed #C3AF9E; border-radius: 6px; padding: 34px 32px; display: flex; flex-direction: column; gap: 16px; min-height: 260px;">
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 64px; line-height: 0.7; color: #E0B98F;">“</span>
+            <p style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 24px; line-height: 1.5; color: #2F1316;">They took the time to explain my results properly, which nobody had done before. I walked out actually understanding my own hearing.</p>
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 5px; padding-top: 18px;">
+              <span style="font-size: 17px; font-weight: 600; color: #332B27;">Client, Alice Springs</span>
+              <span style="font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: #A8917F;">Placeholder quote — to be replaced with an approved client testimonial</span>
+            </div>
+          </div>
+          <div style="background: #FFFFFF; border: 1px dashed #C3AF9E; border-radius: 6px; padding: 34px 32px; display: flex; flex-direction: column; gap: 16px; min-height: 260px;">
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 64px; line-height: 0.7; color: #E0B98F;">“</span>
+            <p style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 24px; line-height: 1.5; color: #2F1316;">I put it off for years. Two appointments in and I’m hearing my grandkids on the phone again — I only wish I’d come in sooner.</p>
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 5px; padding-top: 18px;">
+              <span style="font-size: 17px; font-weight: 600; color: #332B27;">Client, Gillen</span>
+              <span style="font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: #A8917F;">Placeholder quote — to be replaced with an approved client testimonial</span>
+            </div>
+          </div>
+          <div style="background: #FFFFFF; border: 1px dashed #C3AF9E; border-radius: 6px; padding: 34px 32px; display: flex; flex-direction: column; gap: 16px; min-height: 260px;">
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 64px; line-height: 0.7; color: #E0B98F;">“</span>
+            <p style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 24px; line-height: 1.5; color: #2F1316;">Wax removal was quick, painless and a huge relief. The whole team is kind and never makes you feel rushed.</p>
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 5px; padding-top: 18px;">
+              <span style="font-size: 17px; font-weight: 600; color: #332B27;">Client, East Side</span>
+              <span style="font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: #A8917F;">Placeholder quote — to be replaced with an approved client testimonial</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= 2. ABOUT ================= -->
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <div style="background: #2F1316;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px;">
+        <span style="font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: #E3C6AE;">About</span>
+        <h1 style="margin: 12px 0 16px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: {{ h1Size }}; line-height: 1.08; color: #FFFFFF;">About Alice Audiology</h1>
+        <p style="margin: 0; font-size: 21px; line-height: 1.6; color: #F3E3D5; max-width: 660px;">An independent hearing clinic, proudly caring for Central Australia since 2011.</p>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 88px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 68px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 48px; line-height: 1.14; color: #2F1316;">Our Story</h2>
+        <p style="margin: 0; font-size: 19px; line-height: 1.8; color: #4A403C;">At Alice Audiology, we are proud to be Alice Springs' trusted independent hearing clinic, providing personalised and professional hearing care to our local community since 2011.</p>
+        <p style="margin: 0; font-size: 19px; line-height: 1.8; color: #4A403C;">Located in the heart of Alice Springs, our clinic is dedicated to delivering exceptional hearing services with a genuine focus on compassion, connection and individual care. We understand that hearing is deeply personal, which is why every client who walks through our doors is treated with the time, respect and attention they deserve.</p>
+        <p style="margin: 0; font-size: 19px; line-height: 1.8; color: #4A403C;">As a proudly independent clinic, we are not limited to one manufacturer. We work with all major hearing aid brands, allowing us to offer unbiased recommendations and customised hearing solutions chosen specifically for you — not for a sales target. We believe better hearing changes lives.</p>
+      </div>
+      <div style="position: relative; min-height: 460px; border: 1px solid #E6D9CC; border-radius: 6px; overflow: hidden; background: #F3EAE1;"><img src="uploads/266.jpg" alt="A clinician carrying out an ear examination while her client smiles at the camera" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%;"></div>
+    </div>
+    <div style="background: #F3EAE1; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 88px 28px;">
+        <h2 style="margin: 0 0 44px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 46px; color: #2F1316;">How we've grown</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #632718; display: flex; flex-direction: column; gap: 10px;">
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #A8461D; line-height: 1;">2000–2010</span>
+            <h3 style="margin: 0; font-size: 21px; font-weight: 600; color: #2F1316;">A monthly visiting service</h3>
+            <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Visiting hearing care provided in Alice Springs every month.</p>
+          </div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #A8461D; display: flex; flex-direction: column; gap: 10px;">
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #A8461D; line-height: 1;">2011</span>
+            <h3 style="margin: 0; font-size: 21px; font-weight: 600; color: #2F1316;">Full-time independent care</h3>
+            <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Independent hearing care in Alice Springs on a full-time basis.</p>
+          </div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #B07D2A; display: flex; flex-direction: column; gap: 10px;">
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #A8461D; line-height: 1;">Lyric</span>
+            <h3 style="margin: 0; font-size: 21px; font-weight: 600; color: #2F1316;">A first for the Territory</h3>
+            <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">The only clinic in the Northern Territory accredited to fit Lyric, the world’s only invisible 24/7 hearing device, and the only clinic offering local deep wax microsuction under microscope.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background: #FBF7F3; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: flex; flex-direction: column; gap: 34px;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">What matters to us</span>
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.16; color: #2F1316;">The care we would want for our own family</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;"><div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px;"><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Independence</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">No manufacturer owns us and no clinician carries a sales target, so advice is genuinely yours.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px;"><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Compassion</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Hearing loss is personal. We take the time to understand what you are missing, not just your audiogram.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px;"><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Expertise</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Qualified audiologists, advanced diagnostic technology and ongoing professional development.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px;"><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Community</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">We live here. Our clients are neighbours, colleagues and friends across Central Australia.</p></div></div>
+      </div>
+    </div>
+    <div style="background: #F3EAE1; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: flex; flex-direction: column; gap: 34px;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">Your first visit</span>
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.16; color: #2F1316;">What happens when you come in</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;"><div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #A8461D; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">01</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">A conversation</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Where hearing is hardest for you — at work, on the phone, around the table.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #B07D2A; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">02</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">A look inside</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">We examine both ears with a microscope or otoscope before any testing begins.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #632718; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">03</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">The assessment</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Testing in a sound-treated room, taking around an hour in total.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #E78F4F; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">04</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Your results</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Explained in the room, with a written plan and costs in plain figures.</p></div></div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= 3. SERVICES ================= -->
+  <sc-if value="{{ isServices }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <div style="background: #2F1316;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px;">
+        <span style="font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: #E3C6AE;">Services</span>
+        <h1 style="margin: 12px 0 16px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: {{ h1Size }}; line-height: 1.08; color: #FFFFFF;">Our Services</h1>
+        <p style="margin: 0; font-size: 21px; line-height: 1.6; color: #F3E3D5; max-width: 660px;">Everything we offer, from a first hearing test to long-term aftercare — all delivered in Alice Springs.</p>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 88px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 24px;">
+      <div onClick="{{ goAssess }}" style="cursor: pointer; background: #FFFFFF; border: 1px solid #E6D9CC; border-top: 4px solid #632718; border-radius: 6px; padding: 38px 34px; display: flex; flex-direction: column; gap: 14px;" style-hover="box-shadow: 0 14px 34px rgba(47,19,22,0.1); border-color: #A8461D;">
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 32px; color: #2F1316;">Hearing Assessments</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Diagnostic hearing testing and audiological evaluation for children and adults, with personalised management and aftercare.</p>
+        <span style="margin-top: auto; padding-top: 18px; font-size: 16px; font-weight: 600; color: #A8461D;">Find Out More →</span>
+      </div>
+      <div onClick="{{ goAssess }}" style="cursor: pointer; background: #FFFFFF; border: 1px solid #E6D9CC; border-top: 4px solid #B07D2A; border-radius: 6px; padding: 38px 34px; display: flex; flex-direction: column; gap: 14px;" style-hover="box-shadow: 0 14px 34px rgba(47,19,22,0.1); border-color: #A8461D;">
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 32px; color: #2F1316;">Hearing Services Program</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">We are an accredited provider under the Australian Government Hearing Services Program, and we'll check your eligibility for you.</p>
+        <span style="margin-top: auto; padding-top: 18px; font-size: 16px; font-weight: 600; color: #A8461D;">Find Out More →</span>
+      </div>
+      <div onClick="{{ goSpecialist }}" style="cursor: pointer; background: #FFFFFF; border: 1px solid #E6D9CC; border-top: 4px solid #A8461D; border-radius: 6px; padding: 38px 34px; display: flex; flex-direction: column; gap: 14px;" style-hover="box-shadow: 0 14px 34px rgba(47,19,22,0.1); border-color: #A8461D;">
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 32px; color: #2F1316;">Specialist Services</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Tinnitus management, balance testing, auditory processing, industrial noise management, monitoring and custom hearing protection.</p>
+        <span style="margin-top: auto; padding-top: 18px; font-size: 16px; font-weight: 600; color: #A8461D;">Find Out More →</span>
+      </div>
+      <div onClick="{{ goAids }}" style="cursor: pointer; background: #FFFFFF; border: 1px solid #E6D9CC; border-top: 4px solid #E78F4F; border-radius: 6px; padding: 38px 34px; display: flex; flex-direction: column; gap: 14px;" style-hover="box-shadow: 0 14px 34px rgba(47,19,22,0.1); border-color: #A8461D;">
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 32px; color: #2F1316;">Hearing Aids</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Independent selection across every manufacturer, real-ear fitting, fine-tuning, reviews and ongoing aftercare.</p>
+        <span style="margin-top: auto; padding-top: 18px; font-size: 16px; font-weight: 600; color: #A8461D;">Find Out More →</span>
+      </div>
+      <div onClick="{{ goLyric }}" style="cursor: pointer; background: #FFFFFF; border: 1px solid #E6D9CC; border-top: 4px solid #2F1316; border-radius: 6px; padding: 38px 34px; display: flex; flex-direction: column; gap: 14px;" style-hover="box-shadow: 0 14px 34px rgba(47,19,22,0.1); border-color: #A8461D;">
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 32px; color: #2F1316;">Lyric</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">The completely invisible hearing device, worn continuously for months at a time. Fitted here as a Lyric Premier Certified Clinic.</p>
+        <span style="margin-top: auto; padding-top: 18px; font-size: 16px; font-weight: 600; color: #A8461D;">Find Out More →</span>
+      </div>
+      <div onClick="{{ goAids }}" style="cursor: pointer; background: #FFFFFF; border: 1px solid #E6D9CC; border-top: 4px solid #818CA3; border-radius: 6px; padding: 38px 34px; display: flex; flex-direction: column; gap: 14px;" style-hover="box-shadow: 0 14px 34px rgba(47,19,22,0.1); border-color: #A8461D;">
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 32px; color: #2F1316;">Assistive Listening Devices</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">TV streamers, remote microphones, amplified telephones and alerting systems for the moments a hearing aid alone can't solve.</p>
+        <span style="margin-top: auto; padding-top: 18px; font-size: 16px; font-weight: 600; color: #A8461D;">Find Out More →</span>
+      </div>
+      <div onClick="{{ goSpecialist }}" style="cursor: pointer; background: #FFFFFF; border: 1px solid #E6D9CC; border-top: 4px solid #632718; border-radius: 6px; padding: 38px 34px; display: flex; flex-direction: column; gap: 14px;" style-hover="box-shadow: 0 14px 34px rgba(47,19,22,0.1); border-color: #A8461D;">
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 32px; color: #2F1316;">Wax Management</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Gentle, microscope-guided microsuction wax removal — safer and more comfortable than syringing.</p>
+        <span style="margin-top: auto; padding-top: 18px; font-size: 16px; font-weight: 600; color: #A8461D;">Find Out More →</span>
+      </div>
+    </div>
+    <div style="background: #F3EAE1; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: flex; flex-direction: column; gap: 34px;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">Not sure where to start?</span>
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.16; color: #2F1316;">Most people begin the same way</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;"><div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #A8461D; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">01</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Book an assessment</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">A full hearing assessment tells us — and you — exactly what we are working with.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #B07D2A; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">02</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Talk through options</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">If treatment or a device would help, we set out every option, cost included.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #632718; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">03</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Stay looked after</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Reviews, fine-tuning, wax care and repairs continue with the same team.</p></div></div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= 4. HEARING ASSESSMENTS ================= -->
+  <sc-if value="{{ isAssess }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <div style="position: relative; min-height: 340px; display: flex; align-items: center; overflow: hidden;">
+      <img src="uploads/Phonak%20Fitting%20Target.jpg" alt="An audiologist reviewing a client’s hearing results on screen together" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 52%;">
+      <div style="position: absolute; inset: 0; background: linear-gradient(94deg, rgba(47,19,22,0.94) 0%, rgba(47,19,22,0.72) 62%, rgba(47,19,22,0.4) 100%);"></div>
+      <div style="position: relative; max-width: 1320px; width: 100%; margin: 0 auto; padding: 76px 28px; box-sizing: border-box;">
+        <span style="font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: #E3C6AE;">Services / Hearing Assessments</span>
+        <h1 style="margin: 12px 0 16px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 60px; line-height: 1.08; color: #FFFFFF;">Hearing Assessments</h1>
+        <p style="margin: 0; font-size: 21px; line-height: 1.6; color: #F3E3D5; max-width: 640px;">Comprehensive hearing assessments for children and adults.</p>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 60px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.16; color: #2F1316;">What your appointment involves</h2>
+        <p style="margin: 0; font-size: 19px; line-height: 1.8; color: #4A403C;">Your hearing health is essential to everyday life, and our experienced clinicians are dedicated to providing thorough, professional care using advanced diagnostic technology. We offer comprehensive hearing assessments alongside specialised services including occupational hearing evaluations, fitness-to-drive assessments and CASA aviation audiological testing.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+        <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; gap: 18px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D; min-width: 44px;">01</span><div><h3 style="margin: 0 0 5px; font-size: 21px; font-weight: 600; color: #2F1316;">Diagnostic hearing testing</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Full audiometric testing to map exactly what you can and can't hear.</p></div></div>
+        <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; gap: 18px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D; min-width: 44px;">02</span><div><h3 style="margin: 0 0 5px; font-size: 21px; font-weight: 600; color: #2F1316;">Audiological evaluation</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Interpretation by a qualified audiologist, with referral where a medical opinion is needed.</p></div></div>
+        <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; gap: 18px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D; min-width: 44px;">03</span><div><h3 style="margin: 0 0 5px; font-size: 21px; font-weight: 600; color: #2F1316;">Personalised management</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">A plan that suits your hearing, your work and your household — not a default recommendation.</p></div></div>
+        <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; gap: 18px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D; min-width: 44px;">04</span><div><h3 style="margin: 0 0 5px; font-size: 21px; font-weight: 600; color: #2F1316;">Ongoing aftercare</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Reviews and adjustments over time, with the same team who tested you.</p></div></div>
+      </div>
+    </div>
+
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 28px 84px; display: flex; flex-direction: column; gap: 12px;">
+      <div style="position: relative; height: 460px; border: 1px solid #E6D9CC; border-radius: 6px; overflow: hidden; background: #F3EAE1;"><img src="uploads/266.jpg" alt="A clinician carrying out an ear examination while her client smiles at the camera" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%;"></div>
+      <span style="font-size: 15px; color: #7A6A5E;">Assessments for children and adults, from the very young upwards.</span>
+    </div>
+    <div style="background: #FBF7F3; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: flex; flex-direction: column; gap: 34px;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">Who we see</span>
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.16; color: #2F1316;">Assessments for every stage of life</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;"><div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px;"><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Children</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Age-appropriate testing for school-aged children and younger, including listening difficulties in the classroom.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px;"><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Adults</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Diagnostic assessment for gradual hearing change, noise exposure, asymmetry or sudden loss.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px;"><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Workers</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Baseline and monitoring audiometry for local industry, reported for your employer.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px;"><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Drivers & pilots</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Fitness-to-drive and CASA aviation testing, certified to the relevant standard.</p></div></div>
+      </div>
+    </div>
+    <div style="background: #F3EAE1; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: flex; flex-direction: column; gap: 34px;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">Before you come in</span>
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.16; color: #2F1316;">Four things that help us help you</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;"><div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #A8461D; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">01</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Bring a support person</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">A partner or family member often notices things you do not.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #B07D2A; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">02</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Bring your cards</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Pension, DVA or health fund details let us check eligibility on the spot.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #632718; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">03</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Note the hard moments</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">A short list of where you struggle most shapes the whole appointment.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #E78F4F; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">04</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Allow an hour</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Assessments are unhurried — please do not book anything tight afterwards.</p></div></div>
+      </div>
+    </div>
+    <div style="background: #F3EAE1; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px;">
+        <h2 style="margin: 0 0 40px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; color: #2F1316;">Occupational &amp; certified testing</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px;">
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 32px 30px;"><h3 style="margin: 0 0 10px; font-size: 22px; font-weight: 600; color: #2F1316;">Occupational hearing evaluations</h3><p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Baseline and monitoring audiometry for workers in noisy industries, reported for your employer.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 32px 30px;"><h3 style="margin: 0 0 10px; font-size: 22px; font-weight: 600; color: #2F1316;">Fitness-to-drive assessments</h3><p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Hearing assessment for commercial and heavy-vehicle licensing requirements.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 32px 30px;"><h3 style="margin: 0 0 10px; font-size: 22px; font-weight: 600; color: #2F1316;">CASA aviation audiological testing</h3><p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Testing to CASA requirements for pilots and aviation medical certification.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 32px 30px;"><h3 style="margin: 0 0 10px; font-size: 22px; font-weight: 600; color: #2F1316;">Hearing Services Program</h3><p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">The Australian Government Hearing Services Program gives eligible Australians access to quality hearing care, administered by the Office of Hearing Services. Contact us to check your eligibility and available benefits.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= 5. SPECIALIST SERVICES ================= -->
+  <sc-if value="{{ isSpecialist }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <div style="background: #2F1316;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px;">
+        <span style="font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: #E3C6AE;">Services / Specialist Services</span>
+        <h1 style="margin: 12px 0 16px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 62px; line-height: 1.08; color: #FFFFFF;">Specialist Services</h1>
+        <p style="margin: 0; font-size: 21px; line-height: 1.6; color: #F3E3D5; max-width: 680px;">Beyond the hearing test — specialist clinical care for tinnitus, balance, processing and ear health.</p>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 76px 28px 0; display: flex; flex-direction: column; gap: 12px;">
+      <div style="position: relative; height: 440px; border: 1px solid #E6D9CC; border-radius: 6px; overflow: hidden; background: #F3EAE1;"><img src="uploads/17790.jpg" alt="An Alice Audiology clinician carefully checking a client's ear in clinic" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%;"></div>
+      <span style="font-size: 15px; color: #7A6A5E;">Specialist care is hands-on, unhurried and explained as we go.</span>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px;">
+      <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 34px 32px; display: flex; flex-direction: column; gap: 13px;">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#A8461D" stroke-width="1.6" stroke-linecap="round"><path d="M4 18h4l3-7 4 14 3.5-10 2.5 5h11"></path></svg>
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 30px; color: #2F1316;">Tinnitus Management</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Tinnitus — commonly experienced as ringing, buzzing or noise in the ears or head — is a highly individual condition. We provide comprehensive assessments and personalised management strategies to identify the cause, reduce the impact of symptoms and support your long-term hearing wellbeing.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 34px 32px; display: flex; flex-direction: column; gap: 13px;">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#A8461D" stroke-width="1.6" stroke-linecap="round"><circle cx="18" cy="18" r="12"></circle><path d="M6 18c4 3 8 3 12 0s8-3 12 0"></path></svg>
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 30px; color: #2F1316;">Balance Testing</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Your ears play a crucial role in balance, movement and spatial awareness. Our specialised balance assessments combine advanced diagnostic technology with expert clinical care to identify the cause of dizziness, vertigo or imbalance and help you regain confidence and stability.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 34px 32px; display: flex; flex-direction: column; gap: 13px;">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#A8461D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 5c-5.5 0-9 3.6-9 8.4 0 4.2-3 5-3 9.2C6 27 9.4 31 15 31"></path><path d="M18 5c5.5 0 9 3.6 9 8.4 0 4.2 3 5 3 9.2 0 4.4-3.4 8.4-9 8.4"></path><path d="M18 12v12"></path></svg>
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 30px; color: #2F1316;">Auditory Processing</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Evaluation for children and adults who hear sound but struggle to make sense of speech, particularly in noisy classrooms and workplaces.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 34px 32px; display: flex; flex-direction: column; gap: 13px;">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#A8461D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 26V15l6-4 6 4v11"></path><path d="M18 26V18l6-4 6 4v8"></path><path d="M4 30h28"></path></svg>
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 30px; color: #2F1316;">Industrial Noise Management</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Workplace hearing programs for local industry — baseline testing, monitoring and advice on protecting crews from noise exposure.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 34px 32px; display: flex; flex-direction: column; gap: 13px;">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#A8461D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 24V12M12 27V9M19 22V14M26 28V8M33 24V12"></path></svg>
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 30px; color: #2F1316;">Hearing Monitoring</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Regular review for people at risk of hearing change, including those on ototoxic medication or working in ongoing noise.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 34px 32px; display: flex; flex-direction: column; gap: 13px;">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#A8461D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 4c7 0 12 5 12 11v9c0 4-3 8-7.5 8"></path><path d="M18 4C11 4 6 9 6 15v9c0 4 3 8 7.5 8"></path><circle cx="18" cy="17" r="4"></circle></svg>
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 30px; color: #2F1316;">Custom Hearing Protection</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Individually moulded plugs for work, shooting, music, motorcycling and swimming — comfortable enough to actually wear.</p>
+      </div>
+      <div style="background: #FFF8F1; border: 1px solid #E0B98F; border-top: 4px solid #A8461D; border-radius: 6px; padding: 34px 32px; display: flex; flex-direction: column; gap: 13px;" data-wax="1">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#A8461D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="15" r="8"></circle><path d="M21 21l9 9"></path><path d="M11 15h8M15 11v8"></path></svg>
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 30px; color: #2F1316;">Wax Management</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Excess or impacted ear wax can cause hearing difficulties, discomfort and pressure. We remove it using advanced microscope-guided microsuction — gentle, precise and highly effective. We are the only independent audiology clinic in Alice Springs offering this specialised service.</p>
+      </div>
+    </div>
+    <div style="background: #F3EAE1; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: flex; flex-direction: column; gap: 34px;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">Referrals</span>
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.16; color: #2F1316;">Working alongside your GP and specialists</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;"><div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #A8461D; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">01</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Referrals welcome</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Local GPs, ENT specialists, schools and employers can refer directly to the clinic.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #B07D2A; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">02</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Reports back</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">We send clear written reports to your referrer, with your consent.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #632718; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">03</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Onward referral</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">If something needs medical attention, we refer promptly rather than wait and see.</p></div></div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= 6. HEARING AIDS ================= -->
+  <sc-if value="{{ isAids }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <div style="position: relative; min-height: 360px; display: flex; align-items: center; overflow: hidden;">
+      <img src="uploads/Binaural%20Devices%20Phonak.jpg" alt="A pair of slim, modern rechargeable hearing aids" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%;">
+      <div style="position: absolute; inset: 0; background: linear-gradient(94deg, rgba(47,19,22,0.94) 0%, rgba(47,19,22,0.74) 60%, rgba(47,19,22,0.42) 100%);"></div>
+      <div style="position: relative; max-width: 1320px; width: 100%; margin: 0 auto; padding: 80px 28px; box-sizing: border-box;">
+        <span style="font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: #E3C6AE;">Services / Hearing Aids</span>
+        <h1 style="margin: 12px 0 16px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 62px; line-height: 1.08; color: #FFFFFF;">Hearing Aids</h1>
+        <p style="margin: 0; font-size: 21px; line-height: 1.6; color: #F3E3D5; max-width: 640px;">Independent advice across every manufacturer — fitted, tuned and looked after here in Alice Springs.</p>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 60px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">Our independent approach</span>
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 46px; line-height: 1.14; color: #2F1316;">No sales targets. No preferred brand.</h2>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <p style="margin: 0; font-size: 19px; line-height: 1.8; color: #4A403C;">Our hearing aid services are designed to provide truly independent advice, giving you access to a wide range of hearing and listening devices from leading suppliers across Australia, including the latest in cutting-edge hearing technology.</p>
+        <p style="margin: 0; font-size: 19px; line-height: 1.8; color: #4A403C;">From personalised device selection and precise fitting to fine-tuning, reviews and ongoing support, our clinicians are committed to finding the right solution for your individual hearing needs and lifestyle. With no sales quotas, our recommendations are guided by what will provide you with the greatest benefit.</p>
+        <p style="margin: 0; font-size: 19px; line-height: 1.8; color: #4A403C;">We make sure your devices are comfortable, effective and tailored to you every step of the way — and we’ll always provide clear, honest advice when a hearing aid isn’t what you need.</p>
+      </div>
+    </div>
+    <div style="background: #F3EAE1; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px;">
+        <h2 style="margin: 0 0 42px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 46px; color: #2F1316;">From first fitting to long-term care</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px;">
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #A8461D; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 38px; color: #A8461D; line-height: 1;">01</span><h3 style="margin: 0; font-size: 21px; font-weight: 600; color: #2F1316;">Choosing</h3><p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Options from across the market, with the pros, cons and costs of each set out clearly.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #A8461D; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 38px; color: #A8461D; line-height: 1;">02</span><h3 style="margin: 0; font-size: 21px; font-weight: 600; color: #2F1316;">Fitting</h3><p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Real-ear measurement so the device matches your prescription, not a factory preset.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #A8461D; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 38px; color: #A8461D; line-height: 1;">03</span><h3 style="margin: 0; font-size: 21px; font-weight: 600; color: #2F1316;">Fine-tuning</h3><p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Adjustments once you've lived with them — the car, the pub, the phone, the footy.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #A8461D; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 38px; color: #A8461D; line-height: 1;">04</span><h3 style="margin: 0; font-size: 21px; font-weight: 600; color: #2F1316;">Reviews &amp; aftercare</h3><p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Scheduled reviews, repairs, accessories and supplies — ongoing, with the same team.</p></div>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px;">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; padding-bottom: 30px;">
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; color: #2F1316;">Every major manufacturer</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C; max-width: 440px;">We work across the full market, and we'll always explain why we're recommending what we recommend. Manufacturer logos to be added once permissions are confirmed.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px;">
+        <div style="position: relative; height: 150px; border: 1px solid #E6D9CC; border-radius: 4px; overflow: hidden; background: #FFFFFF;"><img src="uploads/device-styles.jpg" alt="In-the-ear and in-the-canal hearing aid styles" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 12px; box-sizing: border-box;"></div>
+        <div style="position: relative; height: 150px; border: 1px solid #E6D9CC; border-radius: 4px; overflow: hidden; background: #FFFFFF;"><img src="uploads/Phonak%20Device.jpg" alt="A slim modern receiver-in-canal hearing aid" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%;"></div>
+        <div style="position: relative; height: 150px; border: 1px solid #E6D9CC; border-radius: 4px; overflow: hidden; background: #FFFFFF;"><img src="uploads/bte-aid.png" alt="A slim receiver-in-canal hearing aid" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 12px; box-sizing: border-box;"></div>
+        <div style="position: relative; height: 150px; border: 1px solid #E6D9CC; border-radius: 4px; overflow: hidden; background: #FFFFFF;"><img src="uploads/Binaural%20Devices%20Phonak.jpg" alt="A pair of modern rechargeable hearing aids" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%;"></div>
+        <div style="position: relative; height: 150px; border: 1px solid #E6D9CC; border-radius: 4px; overflow: hidden; background: #FFFFFF;"><img src="uploads/lyric-device.png" alt="A tiny invisible-in-canal hearing aid" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 12px; box-sizing: border-box;"></div>
+        <div style="position: relative; height: 150px; border: 1px solid #E6D9CC; border-radius: 4px; overflow: hidden; background: #FFFFFF;"><img src="uploads/dome-fingertip.png" alt="The yellow Lyric device on a fingertip, showing how small it is" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 12px; box-sizing: border-box;"></div>
+      </div>
+    </div>
+    <div style="background: #EDF1F5; border-top: 1px solid #DCE4EC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 56px; align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #5E6C84;">Accessories</span>
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.16; color: #2F1316;">Assistive Listening Devices</h2>
+          <p style="margin: 0; font-size: 19px; line-height: 1.8; color: #4A403C;">Wireless accessories bring the moments that matter into crystal-clear focus while minimising background noise, connecting you effortlessly to phones, televisions, music players and computers.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+          <div style="grid-column: 1 / -1; position: relative; height: 240px; border: 1px solid #DCE4EC; border-radius: 4px; overflow: hidden; background: #FFFFFF;"><img src="uploads/tv-streamer.png" alt="A wireless TV streamer and remote control in its charging dock" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 14px; box-sizing: border-box;"></div>
+          <div style="background: #FFFFFF; border-left: 3px solid #818CA3; border-radius: 4px; padding: 22px 24px;"><h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 600; color: #2F1316;">TV streaming</h3><p style="margin: 0; font-size: 16px; line-height: 1.65; color: #4A403C;">Sound straight to your devices, at your own volume.</p></div>
+          <div style="background: #FFFFFF; border-left: 3px solid #818CA3; border-radius: 4px; padding: 22px 24px;"><h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 600; color: #2F1316;">Remote microphones</h3><p style="margin: 0; font-size: 16px; line-height: 1.65; color: #4A403C;">For noisy rooms, meetings and the car.</p></div>
+          <div style="background: #FFFFFF; border-left: 3px solid #818CA3; border-radius: 4px; padding: 22px 24px;"><h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 600; color: #2F1316;">Amplified phones</h3><p style="margin: 0; font-size: 16px; line-height: 1.65; color: #4A403C;">Landline and mobile options that stay simple.</p></div>
+          <div style="background: #FFFFFF; border-left: 3px solid #818CA3; border-radius: 4px; padding: 22px 24px;"><h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 600; color: #2F1316;">Alerting systems</h3><p style="margin: 0; font-size: 16px; line-height: 1.65; color: #4A403C;">Doorbells, alarms and clocks you won't miss.</p></div>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 56px;">
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 42px; color: #2F1316;">Help with the cost</h2>
+        <p style="margin: 0; font-size: 19px; line-height: 1.8; color: #4A403C;">Many of our clients are eligible for the Australian Government Hearing Services Program. We check eligibility, handle the paperwork with you, and always show you what is fully subsidised before anything else.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding-top: 4px;">
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D; font-size: 24px;">01</span><span style="font-size: 17px; font-weight: 600; line-height: 1.5; color: #2F1316;">Pensioner Concession Card holders</span></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D; font-size: 24px;">02</span><span style="font-size: 17px; font-weight: 600; line-height: 1.5; color: #2F1316;">Department of Veterans' Affairs clients</span></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D; font-size: 24px;">03</span><span style="font-size: 17px; font-weight: 600; line-height: 1.5; color: #2F1316;">Private health fund claims and workplace cover</span></div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 42px; color: #2F1316;">Common questions</h2>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 24px; font-size: 18px; color: #2F1316; cursor: pointer;"><span>How long does a fitting appointment take?</span><span style="color: #A8461D; font-size: 24px;">+</span></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 24px; font-size: 18px; color: #2F1316; cursor: pointer;"><span>Can I trial a hearing aid before I commit?</span><span style="color: #A8461D; font-size: 24px;">+</span></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 24px; font-size: 18px; color: #2F1316; cursor: pointer;"><span>Do you service devices bought elsewhere?</span><span style="color: #A8461D; font-size: 24px;">+</span></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 24px; font-size: 18px; color: #2F1316; cursor: pointer;"><span>What if I live remotely and can't visit often?</span><span style="color: #A8461D; font-size: 24px;">+</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= 7. LYRIC ================= -->
+  <sc-if value="{{ isLyric }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <div style="background: #2F1316;">
+      <div style="max-width: 900px; margin: 0 auto; padding: 124px 28px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px;">
+        <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: #E78F4F;">Lyric Premier Certified Clinic</span>
+        <h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 72px; line-height: 1.06; color: #FFFFFF;">Hear naturally. Live freely.</h1>
+        <p style="margin: 0; font-size: 21px; line-height: 1.75; color: #EBD8C8; max-width: 640px;">A completely invisible hearing device, worn continuously for months at a time.</p>
+      </div>
+    </div>
+    <div style="max-width: 900px; margin: 0 auto; padding: 92px 28px 76px; display: flex; flex-direction: column; gap: 22px; text-align: center; align-items: center;">
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 46px; line-height: 1.16; color: #2F1316;">Placed once. Then simply forgotten.</h2>
+      <p style="margin: 0; font-size: 19px; line-height: 1.85; color: #4A403C;">Lyric is the world's first completely invisible hearing device. Worn continuously for months at a time, it requires no daily handling and no battery changes, and stays comfortably in the ear while showering, sleeping, exercising and throughout everyday life. Much like contact lenses transformed vision correction, Lyric has revolutionised hearing care — delivering clear, natural sound in a device so discreet it is virtually invisible.</p>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 28px 88px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px;">
+      <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #E0B98F; display: flex; flex-direction: column; gap: 8px;"><h3 style="margin: 0 0 8px; font-size: 21px; font-weight: 600; color: #2F1316;">Completely invisible</h3><p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Nothing behind the ear, and nothing for anyone else to notice.</p></div>
+      <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #E0B98F; display: flex; flex-direction: column; gap: 8px;"><h3 style="margin: 0 0 8px; font-size: 21px; font-weight: 600; color: #2F1316;">Continuous wear</h3><p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Worn 24 hours a day for months at a time, on a simple subscription.</p></div>
+      <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #E0B98F; display: flex; flex-direction: column; gap: 8px;"><h3 style="margin: 0 0 8px; font-size: 21px; font-weight: 600; color: #2F1316;">No daily handling</h3><p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Nothing to fit, clean or put away — useful if dexterity is a challenge.</p></div>
+      <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #E0B98F; display: flex; flex-direction: column; gap: 8px;"><h3 style="margin: 0 0 8px; font-size: 21px; font-weight: 600; color: #2F1316;">No battery changes</h3><p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">We replace the device in clinic when it's due. That's the whole routine.</p></div>
+    </div>
+    <div style="background: #F3EAE1; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 60px; align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.16; color: #2F1316;">Designed for everyday life</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px;">
+            <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; padding: 20px 20px; display: flex; align-items: center; min-height: 74px;"><span style="font-size: 17px; font-weight: 600; line-height: 1.45; color: #2F1316;">Showering</span></div>
+            <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; padding: 20px 20px; display: flex; align-items: center; min-height: 74px;"><span style="font-size: 17px; font-weight: 600; line-height: 1.45; color: #2F1316;">Sleeping</span></div>
+            <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; padding: 20px 20px; display: flex; align-items: center; min-height: 74px;"><span style="font-size: 17px; font-weight: 600; line-height: 1.45; color: #2F1316;">Exercising</span></div>
+            <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; padding: 20px 20px; display: flex; align-items: center; min-height: 74px;"><span style="font-size: 17px; font-weight: 600; line-height: 1.45; color: #2F1316;">Talking on the phone, at any hour</span></div>
+          </div>
+          <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">Lyric isn't right for every ear. We assess suitability at your first appointment and tell you honestly either way.</p>
+        </div>
+        <div style="position: relative; min-height: 420px; border: 1px solid #E6D9CC; border-radius: 6px; overflow: hidden; background: #FFFFFF;"><img src="uploads/lyric-in-canal.png" alt="Cutaway of the ear showing the Lyric device resting deep in the ear canal" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 18px; box-sizing: border-box;"></div>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: flex; flex-direction: column; gap: 34px;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">Scale</span>
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.16; color: #2F1316;">Smaller than you are picturing</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="position: relative; height: 230px; border-radius: 4px; overflow: hidden; background: #FBF7F3;"><img src="uploads/dome-fingertip.png" alt="The yellow Lyric device with its fine blue removal filament" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 14px; box-sizing: border-box;"></div>
+          <h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">The device itself</h3>
+          <p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Smaller than a fingertip, the yellow Lyric device is sized and placed for your ear canal by an audiologist — nothing rests on or behind the ear.</p>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="position: relative; height: 230px; border-radius: 4px; overflow: hidden; background: #FBF7F3;"><img src="uploads/lyric-in-canal.png" alt="Cutaway showing how deeply the device sits in the ear canal" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 10px; box-sizing: border-box;"></div>
+          <h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Where it sits</h3>
+          <p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Close to the eardrum, which is what gives Lyric its natural sound and invisibility.</p>
+        </div>
+      </div>
+    </div>
+    <div style="background: #F3EAE1; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: flex; flex-direction: column; gap: 34px;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">In clinic</span>
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.16; color: #2F1316;">How a Lyric fitting runs</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;"><div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #A8461D; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">01</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Suitability check</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">We measure and examine your canals — not every ear suits Lyric, and we say so plainly.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #B07D2A; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">02</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Placement</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Fitted in a single appointment, with no moulds and no waiting on an order.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #632718; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">03</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Wear it and forget it</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Months of continuous wear, including showering and sleeping.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #E78F4F; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">04</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Replacement</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Come in when it is due and we place a fresh device — that is the whole routine.</p></div></div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- lyric extra sections -->
+  <!-- ================= 8. MEET THE TEAM ================= -->
+  <sc-if value="{{ isTeam }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <div style="background: #2F1316;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px;">
+        <span style="font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: #E3C6AE;">Our people</span>
+        <h1 style="margin: 12px 0 16px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: {{ h1Size }}; line-height: 1.08; color: #FFFFFF;">Meet the Team</h1>
+        <p style="margin: 0; font-size: 21px; line-height: 1.6; color: #F3E3D5; max-width: 660px;">The same familiar faces at every appointment — that's the point of a local clinic.</p>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 76px 28px 0; display: flex; flex-direction: column; gap: 12px;">
+      <div style="position: relative; height: 500px; border: 1px solid #E6D9CC; border-radius: 6px; overflow: hidden; background: #F3EAE1;"><img src="uploads/Action%20Shot%20Phonak.jpg" alt="An audiologist fitting a hearing aid while her client laughs" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%;"></div>
+      <span style="font-size: 15px; color: #7A6A5E;">Unhurried, personal care at every appointment.</span>
+    </div>
+    <div style="background: #F3EAE1; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: flex; flex-direction: column; gap: 34px;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">How we work</span>
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.16; color: #2F1316;">What you can expect from our team</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;"><div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #A8461D; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">01</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Time to talk</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Appointments are scheduled long enough to actually explain things — no rushing you back out the door.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #B07D2A; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">02</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Plain language</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Results explained in words that make sense, with a copy for your GP if you want one.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #632718; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">03</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">The same faces</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">You see the clinician who tested you at every review, so nothing has to be re-explained.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #E78F4F; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">04</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Honest advice</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">If a device won’t help you, we will say so. Independence means we can.</p></div></div>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 24px;">
+      <div style="grid-column: 1 / -1; background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 36px 28px;">
+        <h2 style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Professional accreditations and memberships</h2>
+        <div style="overflow: hidden;"><div style="display: grid; grid-template-columns: {{ logoCols }}; align-items: center; row-gap: 28px; margin-left: -1px;">
+          <div style="min-width: 0; display: flex; align-items: center; justify-content: center; padding: 6px 28px; border-left: 1px solid #E6D9CC;"><img src="uploads/image1.png" alt="American Academy of Audiology" style="height: 84px; width: auto; max-width: 100%; object-fit: contain; display: block; clip-path: inset(3px);"></div>
+          <div style="min-width: 0; display: flex; align-items: center; justify-content: center; padding: 6px 28px; border-left: 1px solid #E6D9CC;"><img src="uploads/image2.png" alt="Academy of Doctors of Audiology — Accredited, Excellence in Practice" style="height: 70px; width: auto; max-width: 100%; object-fit: contain; display: block;"></div>
+          <div style="min-width: 0; display: flex; align-items: center; justify-content: center; padding: 6px 28px; border-left: 1px solid #E6D9CC;"><img src="uploads/image3.jpeg" alt="Independent Audiologists Australia" style="height: 72px; width: auto; max-width: 100%; object-fit: contain; display: block;"></div>
+          <div style="min-width: 0; display: flex; align-items: center; justify-content: center; padding: 6px 28px; border-left: 1px solid #E6D9CC;"><img src="uploads/image5.jpeg" alt="Audiology Australia — Accredited Audiologist" style="height: 80px; width: auto; max-width: 100%; object-fit: contain; display: block;"></div>
+        </div></div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
+        <div style="padding: 44px 44px 46px; display: flex; flex-direction: column; gap: 14px;">
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 40px; line-height: 1.15; color: #2F1316;">Dr Matthew Callaway</h2>
+          <span style="font-size: 17px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #A8461D;">Principal Audiologist</span>
+          <p style="margin: 0; font-size: 19px; line-height: 1.75; color: #4A403C;">Short biography to be supplied — background, qualifications, clinical interests, and something human about life in Alice Springs.</p>
+        </div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
+        <div style="padding: 44px 44px 46px; display: flex; flex-direction: column; gap: 14px;">
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 40px; line-height: 1.15; color: #2F1316;">Christa Dicker</h2>
+          <span style="font-size: 17px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #A8461D;">Clinic Coordinator &amp; Audiometric Officer</span>
+          <p style="margin: 0; font-size: 19px; line-height: 1.75; color: #4A403C;">Short biography to be supplied — background, qualifications, clinical interests, and something human about life in Alice Springs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= 9. BLOG / RESOURCES ================= -->
+  <sc-if value="{{ isBlog }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <div style="background: #2F1316;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px;">
+        <span style="font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: #E3C6AE;">Resources</span>
+        <h1 style="margin: 12px 0 16px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: {{ h1Size }}; line-height: 1.08; color: #FFFFFF;">Hearing Health Resources</h1>
+        <p style="margin: 0; font-size: 21px; line-height: 1.6; color: #F3E3D5; max-width: 660px;">Plain-language articles on hearing, tinnitus, devices and ear health, written by our clinicians.</p>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 76px 28px 84px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 44px; align-items: start;">
+      <div style="grid-column: span 2; min-width: 0; display: flex; flex-direction: column; gap: 40px;">
+        <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; overflow: hidden;">
+          <div style="position: relative; height: 320px; overflow: hidden;">
+            <img src="uploads/676.jpg" alt="A man cupping his ear, wearing a slim open-fit hearing aid" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%;">
+            <span style="position: absolute; top: 20px; left: 20px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2F1316; background: #E78F4F; padding: 8px 14px; border-radius: 3px;">Featured</span>
+          </div>
+          <div style="padding: 36px 34px 38px; display: flex; flex-direction: column; gap: 14px;">
+            <span style="font-size: 15px; color: #7A6A5E;">Hearing &amp; Wellbeing · 6 min read</span>
+            <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 40px; line-height: 1.16; color: #2F1316;">Rediscovering the moments that matter</h2>
+            <p style="margin: 0; font-size: 19px; line-height: 1.8; color: #4A403C;">Sometimes the smallest sounds hold the biggest meaning — the laughter of grandchildren, birds singing early in the morning, quiet conversations with loved ones, or the sound of rain on the roof. Seeking help for your hearing is not about ageing; it's about staying connected, confident and present in the moments that matter most.</p>
+            <span style="font-size: 17px; font-weight: 600; color: #A8461D; padding-top: 6px;">Read the article →</span>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px;">
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
+            <div style="position: relative; height: 170px; border-bottom: 1px solid #E6D9CC; overflow: hidden; background: #F3EAE1;"><img src="uploads/17790.jpg" alt="A clinician examining a client’s ear canal with a lighted otoscope" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></div>
+            <div style="padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 10px;"><span style="font-size: 14px; color: #7A6A5E;">Tinnitus</span><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 25px; line-height: 1.25; color: #2F1316;">Placeholder article title</h3><p style="margin: 0; font-size: 16px; line-height: 1.7; color: #4A403C;">Short standfirst to be written by the clinic team in WordPress.</p></div>
+          </div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
+            <div style="position: relative; height: 170px; border-bottom: 1px solid #E6D9CC; overflow: hidden; background: #F3EAE1;"><img src="uploads/Action%20Shot%20Phonak.jpg" alt="An audiologist fitting a discreet hearing aid for a smiling client" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%;"></div>
+            <div style="padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 10px;"><span style="font-size: 14px; color: #7A6A5E;">Ear health</span><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 25px; line-height: 1.25; color: #2F1316;">Placeholder article title</h3><p style="margin: 0; font-size: 16px; line-height: 1.7; color: #4A403C;">Short standfirst to be written by the clinic team in WordPress.</p></div>
+          </div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
+            <div style="position: relative; height: 170px; border-bottom: 1px solid #E6D9CC; overflow: hidden; background: #F3EAE1;"><img src="uploads/Binaural%20Devices%20Phonak.jpg" alt="A pair of modern rechargeable hearing aids" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%;"></div>
+            <div style="padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 10px;"><span style="font-size: 14px; color: #7A6A5E;">Hearing aids</span><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 25px; line-height: 1.25; color: #2F1316;">Placeholder article title</h3><p style="margin: 0; font-size: 16px; line-height: 1.7; color: #4A403C;">Short standfirst to be written by the clinic team in WordPress.</p></div>
+          </div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;">
+            <div style="position: relative; height: 170px; border-bottom: 1px solid #E6D9CC; overflow: hidden; background: #F3EAE1;"><img src="uploads/266.jpg" alt="A clinician carrying out an ear examination while her client smiles at the camera" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></div>
+            <div style="padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 10px;"><span style="font-size: 14px; color: #7A6A5E;">Workplace noise</span><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 25px; line-height: 1.25; color: #2F1316;">Placeholder article title</h3><p style="margin: 0; font-size: 16px; line-height: 1.7; color: #4A403C;">Short standfirst to be written by the clinic team in WordPress.</p></div>
+          </div>
+        </div>
+      </div>
+      <div style="min-width: 0; display: flex; flex-direction: column; gap: 28px;">
+        <div style="background: #F3EAE1; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px;">
+          <h3 style="margin: 0 0 14px; font-size: 15px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #A8461D;">Search</h3>
+          <div style="display: flex; gap: 8px;">
+            <span style="flex: 1; background: #FFFFFF; border: 1px solid #DCCDBF; border-radius: 4px; padding: 14px 15px; font-size: 16px; color: #8C7A6C;">Search resources</span>
+            <span style="background: #632718; color: #FBF7F3; border-radius: 4px; padding: 14px 18px; font-size: 16px; font-weight: 600;">Go</span>
+          </div>
+        </div>
+        <div style="border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px; background: #FFFFFF;">
+          <h3 style="margin: 0 0 12px; font-size: 15px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #A8461D;">Categories</h3>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 17px; color: #332B27; background: #FBF7F3; border: 1px solid #EFE3D8; border-radius: 4px; padding: 12px 14px;">Hearing &amp; Wellbeing</span>
+            <span style="font-size: 17px; color: #332B27; background: #FBF7F3; border: 1px solid #EFE3D8; border-radius: 4px; padding: 12px 14px;">Tinnitus</span>
+            <span style="font-size: 17px; color: #332B27; background: #FBF7F3; border: 1px solid #EFE3D8; border-radius: 4px; padding: 12px 14px;">Hearing Aids &amp; Lyric</span>
+            <span style="font-size: 17px; color: #332B27; background: #FBF7F3; border: 1px solid #EFE3D8; border-radius: 4px; padding: 12px 14px;">Ear Health</span>
+            <span style="font-size: 17px; color: #332B27; background: #FBF7F3; border: 1px solid #EFE3D8; border-radius: 4px; padding: 12px 14px;">Workplace Noise</span>
+            <span style="font-size: 17px; color: #332B27; background: #FBF7F3; border: 1px solid #EFE3D8; border-radius: 4px; padding: 12px 14px;">Clinic News</span>
+          </div>
+        </div>
+        <div style="border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px; background: #FFFFFF;">
+          <h3 style="margin: 0 0 12px; font-size: 15px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #A8461D;">Recent posts</h3>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="font-size: 17px; line-height: 1.5; color: #332B27; background: #FBF7F3; border: 1px solid #EFE3D8; border-left: 3px solid #E0B98F; border-radius: 4px; padding: 13px 14px;">Rediscovering the moments that matter</span>
+            <span style="font-size: 17px; line-height: 1.5; color: #332B27; background: #FBF7F3; border: 1px solid #EFE3D8; border-left: 3px solid #E0B98F; border-radius: 4px; padding: 13px 14px;">Placeholder post title two</span>
+            <span style="font-size: 17px; line-height: 1.5; color: #332B27; background: #FBF7F3; border: 1px solid #EFE3D8; border-left: 3px solid #E0B98F; border-radius: 4px; padding: 13px 14px;">Placeholder post title three</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= 10. TESTIMONIALS ================= -->
+  <sc-if value="{{ isTestimonials }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <div style="background: #2F1316;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px;">
+        <span style="font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: #E3C6AE;">Testimonials</span>
+        <h1 style="margin: 12px 0 16px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: {{ h1Size }}; line-height: 1.08; color: #FFFFFF;">What our clients say</h1>
+        <p style="margin: 0; font-size: 21px; line-height: 1.6; color: #F3E3D5; max-width: 660px;">In the words of people we've cared for across Central Australia.</p>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px;">
+      <div style="background: #FFF8F1; border: 1px solid #E0B98F; border-radius: 6px; padding: 26px 30px; margin-bottom: 36px;">
+        <p style="margin: 0; font-size: 17px; line-height: 1.7; color: #632718;"><strong>Build note:</strong> these cards are structural placeholders. Nothing has been written on a client's behalf — each slot is ready for an approved quote, first name and suburb, added in WordPress as a repeatable testimonial block.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px;">
+        <div style="background: #FFFFFF; border: 1px dashed #C3AF9E; border-radius: 6px; padding: 36px 34px; display: flex; flex-direction: column; gap: 16px; min-height: 280px;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 68px; line-height: 0.7; color: #E0B98F;">“</span>
+          <p style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 24px; line-height: 1.5; color: #2F1316;">Honest advice, no pressure to buy anything. They showed me what was subsidised before we talked about anything else.</p>
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 5px; padding-top: 18px;">
+              <span style="font-size: 17px; font-weight: 600; color: #332B27;">Client, Larapinta</span>
+              <span style="font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: #A8917F;">Placeholder quote — to be replaced with an approved client testimonial</span>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px dashed #C3AF9E; border-radius: 6px; padding: 36px 34px; display: flex; flex-direction: column; gap: 16px; min-height: 280px;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 68px; line-height: 0.7; color: #E0B98F;">“</span>
+          <p style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 24px; line-height: 1.5; color: #2F1316;">I travel in from a community a few hours out and they always work around the trip. That matters more than people realise.</p>
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 5px; padding-top: 18px;">
+              <span style="font-size: 17px; font-weight: 600; color: #332B27;">Client, Central Australia</span>
+              <span style="font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: #A8917F;">Placeholder quote — to be replaced with an approved client testimonial</span>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px dashed #C3AF9E; border-radius: 6px; padding: 36px 34px; display: flex; flex-direction: column; gap: 16px; min-height: 280px;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 68px; line-height: 0.7; color: #E0B98F;">“</span>
+          <p style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 24px; line-height: 1.5; color: #2F1316;">My tinnitus used to keep me awake. The strategies they gave me have made the nights manageable again.</p>
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 5px; padding-top: 18px;">
+              <span style="font-size: 17px; font-weight: 600; color: #332B27;">Client, Braitling</span>
+              <span style="font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: #A8917F;">Placeholder quote — to be replaced with an approved client testimonial</span>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px dashed #C3AF9E; border-radius: 6px; padding: 36px 34px; display: flex; flex-direction: column; gap: 16px; min-height: 280px;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 68px; line-height: 0.7; color: #E0B98F;">“</span>
+          <p style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 24px; line-height: 1.5; color: #2F1316;">They took the time to explain my results properly, which nobody had done before. I walked out actually understanding my own hearing.</p>
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 5px; padding-top: 18px;">
+              <span style="font-size: 17px; font-weight: 600; color: #332B27;">Client, Alice Springs</span>
+              <span style="font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: #A8917F;">Placeholder quote — to be replaced with an approved client testimonial</span>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px dashed #C3AF9E; border-radius: 6px; padding: 36px 34px; display: flex; flex-direction: column; gap: 16px; min-height: 280px;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 68px; line-height: 0.7; color: #E0B98F;">“</span>
+          <p style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 24px; line-height: 1.5; color: #2F1316;">I put it off for years. Two appointments in and I’m hearing my grandkids on the phone again — I only wish I’d come in sooner.</p>
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 5px; padding-top: 18px;">
+              <span style="font-size: 17px; font-weight: 600; color: #332B27;">Client, Gillen</span>
+              <span style="font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: #A8917F;">Placeholder quote — to be replaced with an approved client testimonial</span>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px dashed #C3AF9E; border-radius: 6px; padding: 36px 34px; display: flex; flex-direction: column; gap: 16px; min-height: 280px;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 68px; line-height: 0.7; color: #E0B98F;">“</span>
+          <p style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 24px; line-height: 1.5; color: #2F1316;">Wax removal was quick, painless and a huge relief. The whole team is kind and never makes you feel rushed.</p>
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 5px; padding-top: 18px;">
+              <span style="font-size: 17px; font-weight: 600; color: #332B27;">Client, East Side</span>
+              <span style="font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: #A8917F;">Placeholder quote — to be replaced with an approved client testimonial</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div style="background: #F3EAE1; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: flex; flex-direction: column; gap: 34px;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">Share your experience</span>
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.16; color: #2F1316;">Have we helped you hear more of your life?</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;"><div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px;"><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Tell us about it</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">A few sentences about your experience helps other locals take the first step. Call the clinic or email reception.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px;"><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">We always ask first</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Nothing is published without your written approval, and you choose how you are named.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px;"><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Prefer Google?</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">A review on our Google listing helps people find independent hearing care in Alice Springs.</p></div></div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ================= 11. CONTACT ================= -->
+  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <div style="background: #2F1316;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px;">
+        <span style="font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: #E3C6AE;">Contact</span>
+        <h1 style="margin: 12px 0 16px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: {{ h1Size }}; line-height: 1.08; color: #FFFFFF;">Contact Alice Audiology</h1>
+        <p style="margin: 0; font-size: 21px; line-height: 1.6; color: #F3E3D5; max-width: 660px;">Level 1, 8 Gregory Terrace, Alice Springs — in the centre of town.</p>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 56px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-top: 3px solid #A8461D; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 8px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #A8461D;">Phone</span>
+          <a href="tel:0889523110" style="font-family: 'Cormorant Garamond', serif; font-size: 44px; line-height: 1.1; color: #2F1316;">(08) 8952 3110</a>
+          <span style="font-size: 17px; color: #4A403C;">The quickest way to reach us — our client service team answers directly.</span>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 8px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #A8461D;">Address</span>
+          <span style="font-size: 20px; line-height: 1.6; color: #332B27;">Level 1, 8 Gregory Terrace<br>Alice Springs, NT 0870</span>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 8px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #A8461D;">Email</span>
+          <a href="mailto:reception@aliceaudiology.com.au" style="font-size: 20px; line-height: 1.6;">reception@aliceaudiology.com.au</a>
+          <a href="mailto:mc@aliceaudiology.com.au" style="font-size: 20px; line-height: 1.6;">mc@aliceaudiology.com.au</a>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 8px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #A8461D;">Clinic information</span>
+          <span style="font-size: 17px; line-height: 1.75; color: #4A403C;">Lift access to Level 1 · Street parking on Gregory Terrace · Opening hours to be confirmed by the clinic before launch.</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="height: 420px; border: 1px dashed #A8B6C8; border-radius: 6px; background: repeating-linear-gradient(135deg, #EDF1F5 0 12px, #E5EBF2 12px 24px); display: flex; align-items: center; justify-content: center; text-align: center; padding: 26px;">
+          <span style="font-family: ui-monospace, Menlo, monospace; font-size: 13px; line-height: 1.9; letter-spacing: 0.06em; color: #5E6C84;">GOOGLE MAP EMBED<br>8 Gregory Terrace, Alice Springs NT 0870<br>(live embed added at build)</span>
+        </div>
+        <a href="https://maps.google.com/?q=8+Gregory+Terrace+Alice+Springs+NT+0870" style="font-size: 17px; font-weight: 600;">Open in Google Maps →</a>
+      </div>
+    </div>
+    <div style="background: #F3EAE1; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: flex; flex-direction: column; gap: 34px;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">Opening hours</span>
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.16; color: #2F1316;">When you can find us</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;"><div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px;"><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Monday to Friday</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Hours to be confirmed by the clinic before launch.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px;"><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Saturday</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Hours to be confirmed by the clinic before launch.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px;"><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Public holidays</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Closed. Messages left on the phone are returned the next business day.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px;"><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Outside hours</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Send an enquiry any time — we call back during business hours.</p></div></div>
+      </div>
+    </div>
+    <div style="background: #FBF7F3; border-top: 1px solid #E6D9CC;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: flex; flex-direction: column; gap: 34px;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #A8461D;">Getting here</span>
+          <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.16; color: #2F1316;">Finding the clinic in town</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;"><div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #A8461D; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">01</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Level 1, 8 Gregory Terrace</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">In the centre of town, a short walk from the Todd Mall.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #B07D2A; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">02</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Lift access</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Lift access to Level 1, with step-free entry from the street.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #632718; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">03</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Parking</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Street parking on Gregory Terrace and nearby side streets.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; border-top: 3px solid #E78F4F; display: flex; flex-direction: column; gap: 10px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D;">04</span><h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2F1316;">Travelling in</h3><p style="margin: 0; font-size: 17px; line-height: 1.7; color: #4A403C;">Coming from a community? Tell us and we will group your appointments into one trip.</p></div></div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= 12. BOOK / ENQUIRY ================= -->
+  <sc-if value="{{ isBook }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <div style="background: #2F1316;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px;">
+        <span style="font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: #E3C6AE;">Appointments</span>
+        <h1 style="margin: 12px 0 16px; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: {{ h1Size }}; line-height: 1.08; color: #FFFFFF;">Book an Appointment</h1>
+        <p style="margin: 0; font-size: 21px; line-height: 1.6; color: #F3E3D5; max-width: 680px;">Send us a request and our team will call you back to arrange a time that suits. Prefer to talk now? Call <a href="tel:0889523110" style="color: #E78F4F;">(08) 8952 3110</a>.</p>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 84px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 56px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 44px; line-height: 1.16; color: #2F1316;">How it works</h2>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; gap: 18px; align-items: flex-start;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D; min-width: 44px;">01</span><p style="margin: 0; font-size: 18px; line-height: 1.65; color: #4A403C;">Send the request form — it goes straight to the clinic's inbox.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; gap: 18px; align-items: flex-start;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D; min-width: 44px;">02</span><p style="margin: 0; font-size: 18px; line-height: 1.65; color: #4A403C;">We call you back, usually the same business day.</p></div>
+          <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-radius: 6px; padding: 26px 24px; display: flex; gap: 18px; align-items: flex-start;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1; color: #A8461D; min-width: 44px;">03</span><p style="margin: 0; font-size: 18px; line-height: 1.65; color: #4A403C;">We book a time, and let you know if you're eligible for subsidised care.</p></div>
+        </div>
+        <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #4A403C;">There is no live online booking system — a real person confirms every appointment, because the right appointment length depends on why you're coming in.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E6D9CC; border-top: 4px solid #A8461D; border-radius: 6px; padding: 36px 34px; display: flex; flex-direction: column; gap: 18px;">
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 34px; color: #2F1316;">Appointment request</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 7px;"><span style="font-size: 16px; font-weight: 600; color: #332B27;">Full name</span><span style="background: #FDFBF9; border: 1px solid #DCCDBF; border-radius: 4px; padding: 15px 16px; font-size: 16px; color: #9C8B7D;">Your name</span></div>
+          <div style="display: flex; flex-direction: column; gap: 7px;"><span style="font-size: 16px; font-weight: 600; color: #332B27;">Phone</span><span style="background: #FDFBF9; border: 1px solid #DCCDBF; border-radius: 4px; padding: 15px 16px; font-size: 16px; color: #9C8B7D;">Best number to call</span></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 7px;"><span style="font-size: 16px; font-weight: 600; color: #332B27;">Email</span><span style="background: #FDFBF9; border: 1px solid #DCCDBF; border-radius: 4px; padding: 15px 16px; font-size: 16px; color: #9C8B7D;">you@example.com</span></div>
+        <div style="display: flex; flex-direction: column; gap: 7px;"><span style="font-size: 16px; font-weight: 600; color: #332B27;">What would you like to book?</span><span style="background: #FDFBF9; border: 1px solid #DCCDBF; border-radius: 4px; padding: 15px 16px; font-size: 16px; color: #9C8B7D; display: flex; justify-content: space-between;">Hearing assessment <span style="color: #A8461D;">▾</span></span></div>
+        <div style="display: flex; flex-direction: column; gap: 7px;"><span style="font-size: 16px; font-weight: 600; color: #332B27;">Anything we should know?</span><span style="background: #FDFBF9; border: 1px solid #DCCDBF; border-radius: 4px; padding: 15px 16px 62px; font-size: 16px; color: #9C8B7D;">Optional — preferred days, or what's troubling you</span></div>
+        <span style="font-size: 17px; font-weight: 600; color: #FFFFFF; background: #A8461D; padding: 18px 24px; border-radius: 4px; text-align: center; cursor: pointer;" style-hover="background: #632718;">Send request</span>
+        <span style="font-family: ui-monospace, Menlo, monospace; font-size: 12px; line-height: 1.7; color: #8C7A6C;">Submissions email the clinic directly — no booking engine, no CRM. Destination address to be confirmed before build.</span>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ================= FINAL CTA ================= -->
+  <div style="background: #A8461D;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 88px 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px;">
+      <div style="display: flex; flex-direction: column; gap: 14px; min-width: 300px;">
+        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 50px; line-height: 1.12; color: #FFFFFF; max-width: 560px;">Ready to hear life more clearly?</h2>
+        <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #FCEDE1;">Talk to our friendly team about your hearing needs.</p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+        <span onClick="{{ goBook }}" style="cursor: pointer; font-size: 17px; font-weight: 600; color: #A8461D; background: #FFFFFF; padding: 19px 34px; border-radius: 4px;" style-hover="background: #2F1316; color: #FFFFFF;">Book an Appointment</span>
+        <a href="tel:0889523110" style="font-size: 17px; font-weight: 600; color: #FFFFFF; border: 1.5px solid rgba(255,255,255,0.7); padding: 19px 34px; border-radius: 4px;">(08) 8952 3110</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div style="background: #2F1316; color: #D8C5B7;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 72px 28px 34px; display: grid; grid-template-columns: minmax(300px, 1.4fr) repeat(auto-fit, minmax(190px, 1fr)); gap: 40px 36px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <div style="background: #FBF7F3; border-radius: 4px; padding: 10px 12px; align-self: flex-start; max-width: 100%; box-sizing: border-box;">
+          <img src="uploads/Alice Audiology Logo.jpg" alt="Alice Audiology" style="width: 300px; max-width: 100%; height: auto; display: block;">
+        </div>
+        <p style="margin: 0; font-size: 17px; line-height: 1.75; color: #BCA697;">Alice Springs' independent ear and hearing clinic, caring for Central Australia since 2011.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #E78F4F; padding-bottom: 4px;">Visit</span>
+        <span style="font-size: 17px; line-height: 1.6;">Level 1, 8 Gregory Terrace<br>Alice Springs NT 0870</span>
+        <span style="font-size: 15px; color: #A8917F;">Opening hours to be confirmed</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #E78F4F; padding-bottom: 4px;">Contact</span>
+        <a href="tel:0889523110" style="font-size: 17px; color: #F0E3D8;">(08) 8952 3110</a>
+        <a href="mailto:reception@aliceaudiology.com.au" style="font-size: 17px; color: #F0E3D8; overflow-wrap: anywhere;">reception@aliceaudiology.com.au</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #E78F4F; padding-bottom: 4px;">Explore</span>
+        <span onClick="{{ goServices }}" style="cursor: pointer; font-size: 17px;">Services</span>
+        <span onClick="{{ goLyric }}" style="cursor: pointer; font-size: 17px;">Lyric</span>
+        <span onClick="{{ goTeam }}" style="cursor: pointer; font-size: 17px;">Meet the Team</span>
+        <span onClick="{{ goBlog }}" style="cursor: pointer; font-size: 17px;">Resources</span>
+        <span onClick="{{ goContact }}" style="cursor: pointer; font-size: 17px;">Contact</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #E78F4F; padding-bottom: 4px;">Newsletter</span>
+        <span style="font-size: 16px; line-height: 1.6; color: #BCA697;">Occasional hearing health notes from our clinicians.</span>
+        <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(231,143,79,0.4); border-radius: 4px; padding: 13px 14px; font-size: 16px; color: #A8917F;">Your email address</span>
+        <span style="background: #E78F4F; color: #2F1316; border-radius: 4px; padding: 13px 18px; font-size: 16px; font-weight: 600; text-align: center; cursor: pointer;">Sign up</span>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 22px 28px 40px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; font-size: 15px; color: #A8917F;">
+      <span>© 2026 Alice Audiology · Audiologist Alice Springs</span>
+      <span>Privacy · Terms · Accessibility</span>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;tagline&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Hear your world and what matters most&quot;,&quot;Reconnect your life through Sound&quot;,&quot;Where Better Hearing Begins&quot;],&quot;default&quot;:&quot;Hear your world and what matters most&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Home hero&quot;}}">
+class Component extends DCLogic {
+  state = { page: "home", menu: false, drawer: false, w: typeof window !== "undefined" ? window.innerWidth : 1440 };
+
+  componentDidMount() {
+    this._onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener("resize", this._onResize);
+    this._onResize();
+  }
+  componentWillUnmount() { window.removeEventListener("resize", this._onResize); }
+
+  go(p) {
+    this.setState({ page: p, menu: false, drawer: false });
+    if (typeof window !== "undefined") window.scrollTo({ top: 0 });
+  }
+
+  renderVals() {
+    const p = this.state.page;
+    const nav = (k) => (p === k ? "#A8461D" : "#332B27");
+    const svcPages = ["services", "assess", "specialist", "aids"];
+    const w = this.state.w;
+    const compact = w < 1440;
+    const narrow = w < 620;
+    return {
+      tagline: this.props.tagline ?? "Hear your world and what matters most",
+      menuDisplay: this.state.menu ? "flex" : "none",
+      toggleMenu: () => this.setState((s) => ({ menu: !s.menu })),
+
+      deskNav: compact ? "none" : "flex",
+      burger: compact ? "inline-flex" : "none",
+      drawerDisplay: compact && this.state.drawer ? "flex" : "none",
+      toggleDrawer: () => this.setState((s) => ({ drawer: !s.drawer, menu: false })),
+      burgerIcon: this.state.drawer ? "✕" : "☰",
+      headerPhone: compact && !narrow ? "block" : "none",
+      ctaLabel: narrow ? "Book" : "Book an Appointment",
+      logoCols: w >= 1100 ? "repeat(4, minmax(0, 1fr))" : w >= 560 ? "repeat(2, minmax(0, 1fr))" : "minmax(0, 1fr)",
+      logoW: compact ? (narrow ? "220px" : "360px") : "340px",
+      heroSize: w < 760 ? "44px" : w < 1100 ? "58px" : "74px",
+      h1Size: w < 760 ? "40px" : w < 1100 ? "52px" : "64px",
+      secSize: w < 760 ? "34px" : w < 1100 ? "42px" : "52px",
+      pad: narrow ? "56px 20px" : "88px 28px",
+
+      isHome: p === "home",
+      isAbout: p === "about",
+      isServices: p === "services",
+      isAssess: p === "assess",
+      isSpecialist: p === "specialist",
+      isAids: p === "aids",
+      isLyric: p === "lyric",
+      isTeam: p === "team",
+      isBlog: p === "blog",
+      isTestimonials: p === "testimonials",
+      isContact: p === "contact",
+      isBook: p === "book",
+
+      navHome: nav("home"),
+      navAbout: nav("about"),
+      navServices: svcPages.indexOf(p) >= 0 ? "#A8461D" : "#332B27",
+      navAids: nav("aids"),
+      navLyric: nav("lyric"),
+      navTeam: nav("team"),
+      navBlog: nav("blog"),
+      navContact: nav("contact"),
+
+      goHome: () => this.go("home"),
+      goAbout: () => this.go("about"),
+      goServices: () => this.go("services"),
+      goAssess: () => this.go("assess"),
+      goSpecialist: () => this.go("specialist"),
+      goAids: () => this.go("aids"),
+      goLyric: () => this.go("lyric"),
+      goTeam: () => this.go("team"),
+      goBlog: () => this.go("blog"),
+      goTestimonials: () => this.go("testimonials"),
+      goContact: () => this.go("contact"),
+      goBook: () => this.go("book")
+    };
+  }
+}
+</script>
+</body>
+</html>
